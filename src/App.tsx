@@ -3,7 +3,6 @@ import { Dashboard } from './components/Dashboard';
 import { TimelineView } from './components/TimelineView';
 import { TaskView } from './components/TaskView';
 import { AuthorProfiles } from './components/AuthorProfiles';
-import { Recommendations } from './components/Recommendations';
 import { Account } from './components/Account';
 import { InsightSummary } from './components/InsightSummary';
 import { AIChatSidebar } from './components/AIChatSidebar';
@@ -13,7 +12,7 @@ import { NotificationView } from './components/NotificationView';
 import { TopNavigation } from './components/TopNavigation';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from './components/ui/tabs';
 import { Button } from './components/ui/button';
-import { Brain, MessageSquare, Clock, Users, TrendingUp, UserCircle, Lightbulb, Plus, CheckSquare, Menu, X, ChevronLeft, ChevronRight, Bell, FileText, Inbox, Star, Archive, ChevronDown, ChevronUp, AlertCircle, Tags, MoreVertical, Edit, Trash2, LayoutDashboard, Target, StopCircle, BookOpen } from 'lucide-react';
+import { Brain, MessageSquare, Clock, Users, TrendingUp, UserCircle, Lightbulb, Plus, CheckSquare, Menu, X, ChevronLeft, ChevronRight, Bell, FileText, Inbox, Star, Archive, ChevronDown, ChevronUp, AlertCircle, Tags, MoreVertical, Edit, Trash2, LayoutDashboard, Target, StopCircle } from 'lucide-react';
 import { Toaster } from './components/ui/sonner';
 import { mockPosts } from './lib/mockData';
 import { Label } from './components/LabelContextMenu';
@@ -546,18 +545,6 @@ export default function App() {
             </button>
 
             <button
-              onClick={() => handleTabChange('recommendations')}
-              className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-colors ${
-                activeTab === 'recommendations'
-                  ? 'bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400'
-                  : 'text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800'
-              }`}
-            >
-              <BookOpen className="w-5 h-5 flex-shrink-0" />
-              <span>Recommendations</span>
-            </button>
-
-            <button
               onClick={() => handleTabChange('account')}
               className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-colors ${
                 activeTab === 'account'
@@ -597,7 +584,6 @@ export default function App() {
               {activeTab === 'task' && <TaskView onPostClick={handlePostClick} onOpenChat={handleOpenChatWithPost} initialTopics={initialTopics} activeSubTab={activePostSubTab} initialLabelFilters={showAllLabels ? [] : selectedLabels} allLabels={allLabels} />}
               {activeTab === 'labels' && <TaskView onPostClick={handlePostClick} onOpenChat={handleOpenChatWithPost} initialTopics={[]} activeSubTab={'inbox'} initialLabelFilters={showAllLabels ? [] : selectedLabels} allLabels={allLabels} />}
               {activeTab === 'authors' && <AuthorProfiles />}
-              {activeTab === 'recommendations' && <Recommendations />}
               {activeTab === 'account' && <Account darkMode={darkMode} setDarkMode={setDarkMode} />}
               {activeTab === 'summary' && <InsightSummary onBack={() => handleTabChange('dashboard')} />}
             </>
